@@ -28,6 +28,18 @@ Any producer or consumer of the format MUST assume that multiple entries in the 
 
 Note that the payload field MAY be empty. In this case, the meaning of the AIL JSON message is that tags may update an existing previous message with the same "uuid".
 
+## The `meta` header
+|Field|Description|Values|Mandatory field?|
+|:----|:----------|:-----|:-----|
+|`uuid`| A UUIDv4 uuid of the AIL message. | _string_ | Yes |
+|`uuid_org`| A UUIDv4 uuid of the emitting organisation. If the emitting org has a MISP UUID, it SHOULD re-use that MISP uuid. This will help in correlating AIL Stream messages to MISP org UUIDs.| _string_ | Yes |
+|`tags` | A JSON array (list) of tags (strings) | list of arbitrary strings | No | 
+|`encoding` | The encoding of the fields of the payload | "base64", <string> | No |
+|`compress` | The compression used (before `encoding`) | "gzip", ... <string> | No |
+|_prefix_:_key_ | any user of the AIL Streaming format MAY add extension key-value pairs to the `meta` header, as long as the key is prefixed. Example: `"ail:mime-type": "text/plain"` | prefix:key | No |
+
+    
+
 
 ## AIL object types
 
