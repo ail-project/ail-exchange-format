@@ -19,7 +19,7 @@
        "ail:id": "object_id",
        "ail:mime-type": "text/plain",
        "ail:subtype": "foobar",
-       "ail:tags": "mails",
+       "ail:tags": ["mails", "custom_tag"],
        "ail:decoded": "True"
     },
     "payload": {
