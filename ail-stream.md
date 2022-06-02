@@ -45,7 +45,7 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
 |:---|:----------|
 |event|An [IntelMQ Data Format event](https://intelmq.readthedocs.io/en/maintenance/dev/data-format.html) (a JSON object)|
 
-# Example
+# Examples
 ~~~
 {
     "format": "ail",
@@ -54,16 +54,37 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
     "meta": {
        "uuid": "03c51929-eeab-4d47-9dc0-c667f94c7d2c",
        "uuid_org": "28bc3db3-16da-461c-b20b-b944f4058708",
+       "tags": ["mails", "custom_tag"],
+       "encoding": "base64",
+       "compress": "gzip",
        "ail:id": "object_id",
-       "mime-type": "text/plain",
-       "ail:subtype": "foobar",
-       "ail:tags": ["mails", "custom_tag"],
-       "ail:decoded": "True"
+       "ail:mime-type": "text/plain",
+       "ail:subtype": "foobar"
     },
     "payload": {
-        "raw" : "MjhiYzNkYjMtMTZkYS00NjFjLWIyMGItYjk0NGY0MDU4NzA4Cg=="
-        "compress": "gzip",
-        "encoding": "base64"
+       "raw" : "MjhiYzNkYjMtMTZkYS00NjFjLWIyMGItYjk0NGY0MDU4NzA4Cg=="
+    }
+}
+~~~
+
+~~~
+{
+    "format": "intelmq",
+    "version": 2,
+    "type": "event",
+    "meta": {
+       "uuid": "03c51929-eeab-4d47-9dc0-aaaaaaaaaaaa",
+       "uuid_org": "28bc3db3-16da-461c-b20b-aaaaaaaaaaaa",
+       "tags": []
+    },
+    "payload": {
+       "raw" : "MjhiYzNkYjMtMTZkYS00NjFjLWIyMGItYjk0NGY0MDU4NzA4Cg==",
+       "source.ip": "1.2.3.4",
+       "destination.ip": "5.6.7.8",
+       "source.asn": "35492",
+       "classification.taxonomy": "Spam",
+       "classification.type": "xyz",
+       "...IntelMQ Data Format key...": "...IntelMQ data format value..."
     }
 }
 ~~~
