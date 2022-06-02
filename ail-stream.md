@@ -16,8 +16,10 @@
     "meta": {
        "ail:uuid": "03c51929-eeab-4d47-9dc0-c667f94c7d2c",
        "ail:uuid_org": "28bc3db3-16da-461c-b20b-b944f4058708",
+       "ail:id": "object_id",
        "ail:mime-type": "text/plain",
        "ail:subtype": "foobar",
+       "ail:tags": "mails",
        "ail:decoded": "True"
     },
     "payload": {
