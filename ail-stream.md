@@ -1,5 +1,9 @@
 # AIL Stream Format version 1
 
+## General description
+
+## Field description and meaning
+
 |Field|Description|Values|Required|
 |:----|:----------|:-----|:-----|
 |`format`|Format of the stream|`ail`|Yes|
@@ -8,6 +12,18 @@
 |`meta`|Dictionary of meta values|dict|No|
 |`payload`|Dictionary with the actual payload or a reference|dict|No|
 
+## AIL object types
+
+|Name|Description|
+|:---|:----------|
+|item|Non-binary content|
+|screenshot|Screenshot from AIL crawler|
+|username|Username extracted|
+|cryptocurrency|Cryptocurrency address extracted|
+|pgp-dump|PGP metadata from a PGP key block|
+|binary|Binary content|
+
+# Example data
 ~~~
 {
     "format": "ail",
@@ -30,13 +46,4 @@
 }
 ~~~
 
-# AIL object types
-
-|Name|Description|
-|:---|:----------|
-|item|Non-binary content|
-|screenshot|Screenshot from AIL crawler|
-|username|Username extracted|
-|cryptocurrency|Cryptocurrency address extracted|
-|pgp-dump|PGP metadata from a PGP key block|
-|binary|Binary content|
+# JSON Schema
