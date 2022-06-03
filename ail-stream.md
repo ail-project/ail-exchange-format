@@ -18,7 +18,8 @@ Any producer or consumer of the format MUST assume that multiple entries in the 
 
 # Field description and semantics
 
-|Field|Description|Values|Mandatory field?|
+
+|Field|Description|Values|Required|
 |:----|:----------|:-----|:-----|
 |`format`|Format of the stream|`ail` or `intelmq`|Yes|
 |`version`|Version of the stream format|`1`|Yes|
@@ -52,12 +53,14 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
 |pgp-dump|PGP metadata from a PGP key block|
 |binary|Binary content|
 
+
 ## IntelMQ object types
 |Name|Description|
 |:---|:----------|
 |event|An [IntelMQ Data Format event](https://intelmq.readthedocs.io/en/maintenance/dev/data-format.html) (a JSON object)|
 
 # Examples
+
 ~~~
 {
     "format": "ail",
@@ -78,6 +81,7 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
     }
 }
 ~~~
+
 
 ~~~
 {
@@ -100,4 +104,5 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
     }
 }
 ~~~
+
 
