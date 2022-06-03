@@ -53,6 +53,7 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
 |cryptocurrency|Cryptocurrency address extracted|
 |pgp-dump|PGP metadata from a PGP key block|
 |binary|Binary content|
+|misp-object|A [MISP object](https://www.misp-standard.org/rfc/misp-standard-core.txt)|
 
 
 ## IntelMQ object types
