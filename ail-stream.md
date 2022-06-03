@@ -23,7 +23,7 @@ Any producer or consumer of the format MUST assume that multiple entries in the 
 
 |Field|Description|Values|Required|
 |:----|:----------|:-----|:-----|
-|`format`|Format of the stream|`ail` or `intelmq`|Yes|
+|`format`|Format of the stream|`ail`or`intelmq`or`passive-ssh`|Yes|
 |`version`|Version of the stream format|`1`|Yes|
 |`type`|Type of the object in the "payload" field| For AIL, see the `AIL object type` table. For IntelMQ, currently the only defined value is `event`|Yes|
 |`meta`|(JSON) Dictionary of meta values. See below for a definition of fields|dict|No|
