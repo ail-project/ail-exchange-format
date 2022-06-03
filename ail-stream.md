@@ -1,7 +1,9 @@
 # AIL Stream Format version 1
 
 ## Overview and use-cases
+
 This document describes the AIL Stream format version 1. 
+
 The AIL Stream format describes *messages*. For AIL the main purpose of having a well defined AIL Stream formatted message, is to enable the AIL2AIL sync mechanism. Next to AIL, the format is also used by [IntelMQ](https://intelmq.org) as a streaming format for IntelMQ-to-IntelMQ instance connections. For IntelMQ, the purpose is similar: enable connecting of IntelMQ instances to each other. 
 
 In both cases, we want to know if a particular item was already received (possibly via another sync path) at the receiving end. For this, UUIDs are added. See the format description below.
@@ -13,11 +15,11 @@ The "format" field inside of "meta" specifies the particular payload.
 Both IntelMQ and AIL will add the "meta" header and use the AIL Stream format for intelmq-to-intelmq or AIL-to-AIL exchanges. Inside of the respective tool, the header is not needed and MAY be striped off. Care needs to be taken to keep relevant information (such as the uuid) when passing . 
 
 ## ND-JSON
+
 Any producer or consumer of the format MUST assume that multiple entries in the AIL stream format can be produced or consume in a single stream. Therefore, the parser or producer MUST support [ND-JSON](http://ndjson.org/).
 
 
 # Field description and semantics
-
 
 |Field|Description|Values|Required|
 |:----|:----------|:-----|:-----|
@@ -33,15 +35,14 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
 |Field|Description|Values|Mandatory field?|
 |:----|:----------|:-----|:-----|
 |`uuid`| A UUIDv4 uuid of the AIL message. | _string_ | Yes |
-|`uuid_org`| A UUIDv4 uuid of the emitting organisation. If the emitting org has a MISP UUID, it SHOULD re-use that MISP uuid. This will help in correlating AIL Stream messages to MISP org UUIDs.| _string_ | Yes |
+|`uuid_org`| A UUIDv4 uuid of the emitting organisation. If the emitting org has a MISP UUID, it SHOULD re-use that MISP uuid. This will help in correlating AIL Stream messages to MISP org UUIDs.| _string_ | No |
+|`uuid_instance`| A UUIDv4 uuid of the emitting instance (can be a sensor, device or specific software installation). | _string_ | No |
 |`tags` | A JSON array (list) of tags (strings) | list of arbitrary strings | No | 
 |`encoding` | The encoding of the fields of the payload | "base64", _string_ | No |
 |`compress` | The compression used (before `encoding`) | "gzip", ... _string_ | No |
 |_prefix_:_key_ | any user of the AIL Streaming format MAY add extension key-value pairs to the `meta` header, as long as the key is prefixed. Example: `"ail:mime-type": "text/plain"` | _string_ | No |
 
     
-
-
 ## AIL object types
 
 |Name|Description|
@@ -55,9 +56,16 @@ Note that the payload field MAY be empty. In this case, the meaning of the AIL J
 
 
 ## IntelMQ object types
+
 |Name|Description|
 |:---|:----------|
 |event|An [IntelMQ Data Format event](https://intelmq.readthedocs.io/en/maintenance/dev/data-format.html) (a JSON object)|
+
+## Passive SSH object types
+
+|Name|Description|
+|:---|:----------|
+|scan|a MISP object of the [passive-ssh](https://github.com/MISP/misp-objects/blob/main/objects/passive-ssh/definition.json) scan|
 
 # Examples
 
